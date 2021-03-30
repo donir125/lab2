@@ -24,7 +24,27 @@ class LinkedList:
             current = self.first
             while current.next.val != val:
                 current = current.next
-            current.next = current.next.next
+            if current.next != self.last:
+                current.next = current.next.next
+            else:
+                current.next = None
+
+    def searchEl(self, val):
+        current = self.first
+        if current is not None:
+            if current.val == val:
+                return "{} is on 0 position".format(val)
+            else:
+                k = 1
+                while current.next.val != val:
+                    current = current.next
+                    k += 1
+                if current.next.val == val:
+                    return "{} is on {} position".format(val, k)
+                else:
+                    return "value is not found"
+        else:
+            return "value is not found"
 
     def printList(self):
         current = self.first

@@ -26,6 +26,12 @@ class ChainHash:
         hashvalue = self.hashFunc(val)
         self.data[hashvalue].deleteEl(val)
 
+    def search(self, val):
+        hashval = self.hashFunc(val)
+        ans = self.data[hashval].searchEl(val)
+        return ans + "with hash - {}".format(hashval)
+
+
     def __str__(self):
         s = ""
         k = 0
@@ -56,5 +62,5 @@ chainhash.addEl(45)
 chainhash.addEl(333)
 chainhash.delEl(9)
 print(chainhash)
-
+print(chainhash.search(42))
 
